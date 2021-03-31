@@ -27,8 +27,8 @@ class Stack():
 
         if self.length == 0:
             self.top = new_node
-            new_node.next = self.bottom
-            self.bottom = self.top
+            #new_node.next = self.bottom
+            self.bottom = new_node
             self.length += 1
 
         else:
@@ -82,6 +82,24 @@ if __name__ == '__main__':
 
 
     print("BOTTOM", my_stack.bottom.data)
+
+    my_stack.push("Facebook")
+    print("TOP", my_stack.top.data)
+    print("BOTTOM", my_stack.bottom.data)
+    my_stack.print_stack()
+    print("removing elements")
+    my_stack.pop()
+    my_stack.print_stack()
+    print("removing elements")
+    my_stack.pop()
+    my_stack.print_stack()
+    print("removing elements")
+    my_stack.pop()
+    my_stack.print_stack()
+    print("removing elements")
+    my_stack.pop()
+    my_stack.print_stack()
+    my_stack.print_stack()
 
 
 
