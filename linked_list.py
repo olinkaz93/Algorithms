@@ -133,49 +133,7 @@ class LinkedList():
                 print("traveresed node, with index", index, traversed_node.data)
 
 
-    def reverse(self):
-        #we allocate primar input,
-        #the previous element before the head is None
-        #the current element we start reversing is head
-        #the next element after head is self.head.next
 
-        #we must point locations of nodes before assigning, the new node.next value
-
-
-        previous_node = None
-        current_node = self.head
-        next_node = None
-        if (self.length == 1):
-            print ("same list!")
-            self.print_values()
-        else:
-            head_node = self.head
-            tail_node = self.tail
-            # [ ] -> [ ] -> [ ] -> [ ] -> [ ] -> [ ]
-
-            previous_node = None
-            current_node = self.head
-            next_node = current_node.next
-
-
-            #chanking the pointer -> next will connect the previous element
-            current_node.next = previous_node
-            #print("value of the previous element", previous_node)
-            self.tail = current_node
-            #print("tail.data", self.tail.data, " tail -> next", self.tail.next)
-
-            while (next_node != None):
-
-                current_node.next = previous_node
-                previous_node = current_node
-                current_node = next_node
-                next_node = current_node.next
-
-            self.head = current_node
-            self.head.next = previous_node
-
-            #print("revered HEAD!!!!!!!!!!!!!:", self.head.data)
-            #print("reversed TAIL", self.tail.data)
 
 if __name__ == '__main__':
 
