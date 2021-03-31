@@ -9,7 +9,11 @@ class Stack():
         self.array.append(value)
 
     def pop(self):
-        self.array.pop()
+        if (len(self.array) == 0):
+            print("nothing to delete, empty stack")
+            return
+        else:
+            self.array.pop()
 
     def print(self):
         #order of inserted values
@@ -26,4 +30,6 @@ if __name__ == '__main__':
     my_stack.push("google")
     my_stack.push("uber")
     my_stack.push("amazon")
+    my_stack.print()
+    my_stack.pop()
     my_stack.print()
