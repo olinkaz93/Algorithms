@@ -31,13 +31,6 @@ class Stack():
             self.bottom = self.top
             self.length += 1
 
-        #otherwise we do not need to add it to the very bottom, but only to the top of the stack, we should update the
-        #other second-top element for future reference
-        elif self.length == 1:
-            self.top = new_node
-            new_node.next = self.bottom
-            self.length += 1
-
         else:
             new_node.next = self.top
             self.top = new_node
@@ -49,15 +42,9 @@ class Stack():
     def pop(self):
         if self.length == 0:
             print("Nothing to remove, empty stack")
-            return
         elif self.length == 1:
             self.top = None
             self.bottom = None
-            self.length = 0
-        #if there are more elements on the stack, we must to remove the current TOP element and keep the second-top
-        #element as the top one
-        elif self.length == 2:
-            self.top = self.bottom
             self.length -= 1
         else:
             second_top = self.top.next
@@ -68,9 +55,18 @@ class Stack():
     def peek(self):
         if self.length == 0:
             print ("empty stack")
+            return None
         else:
-            top_node = self.top
-            return top_node.data
+            return self.top.data
+
+    def print_stack(self):
+        if self.length == 0:
+            print("nothing to print!")
+        else:
+            element_to_print = self.top
+            while (element_to_print != None):
+                print(element_to_print.data)
+                element_to_print = element_to_print.next
 
 if __name__ == '__main__':
 
@@ -78,20 +74,14 @@ if __name__ == '__main__':
     my_stack.push("Google")
     my_stack.push("Uber")
     my_stack.push("Amazon")
-    my_stack.push("Yahoo")
 
-    print(my_stack.peek())
-    #print(my_stack.top.next.data)
 
-    my_stack.pop()
-    print(my_stack.peek())
-    my_stack.pop()
-    print(my_stack.peek())
-    my_stack.pop()
-    print(my_stack.peek())
-    my_stack.pop()
-    print(my_stack.peek())
-    my_stack.pop()
+
+    my_stack.print_stack()
+    print("TOP", my_stack.top.data)
+
+
+    print("BOTTOM", my_stack.bottom.data)
 
 
 
