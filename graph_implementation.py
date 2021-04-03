@@ -3,7 +3,17 @@ class Graph():
         self.number_of_nodes = 0
         self.adjacent_list = {}
 
-        # adjacent_list = {
+        """ adjacent_list = {
+        'node' : [ connected_node, another_connected node ] 
+        'node2' : [ node, node, node ...]
+        }
+        """
+
+
+        # adjacent_list:
+        # {0: [1, 2], 1: [0, 2, 3], 2: [0, 1, 4], 3: [1, 4], 4: [2, 3, 5], 5: [4, 6], 6: [5]}
+
+        # adjacent_list[0] = [ 1, 2 ]
 
     def addNode(self, data):
         if data not in self.adjacent_list:
@@ -63,6 +73,7 @@ if __name__ == "__main__":
     sample_graph.addEdge(6, 5)
 
     print(sample_graph.adjacent_list)
+    print(sample_graph.adjacent_list[0])
 
 
 
