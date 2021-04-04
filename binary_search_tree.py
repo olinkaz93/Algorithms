@@ -66,6 +66,68 @@ class BinarySearchTree():
             while (current_node.left.value != None or current_node.right.value != None):
     """
 
+    def remove(self, value):
+        value_to_remove = value
+        if self.root == None:
+            print("Nothing to remove, BST is empty")
+        else:
+            current_node = self.root
+            parent_node = None
+            while(True):
+                if(value_to_remove < current_node.value and current_node.left != None):
+                    parent_node = current_node
+                    current_node = current_node.left
+                elif(value_to_remove > current_node.value and current_node.right != None):
+                    parent_node = current_node
+                    current_node = current_node.right
+                elif(value_to_remove == current_node.value):
+                    print("found it, now remove it!")
+                    print("parent", current_node.value)
+                    #when the node to remove is the root we must update the self.root
+                    #when the node to remove is a leaf element - has no right neither left children
+                    elif (current_node.left == None and current_node.right == None):
+                        if (parent_node == None):
+                            self.root = None
+                            return
+                        elif current_node.value > parent_node.value:
+                            parent_node.right = None
+                            return
+                        elif current_node.value < parent_node.value:
+                            parent_node.left = None
+                        return
+                    #when the node to remove had only the right leaf
+                    elif (current_node.left == None and current_node.right != None):
+                        #we must link, this leaf to the parent node, accordingly wethher the value is > or <
+                        if parent_node == None:
+                            self.root = current_node.right
+                            return
+                        elif current_node.value > parent_node.value:
+                            parent_node.right = current_node.right
+                        elif current_node.value < parent_node.value:
+                            parent_node.left = current_node.right
+                    elif (current_node.left != None and current_node.right == None):
+                        if parent_node == None:
+                            self.root = current_node.left
+                            return
+                        elif current_node.value > parent_node.value:
+                            parent_node.right = current_node.right
+                            return
+                        elif current_node.value < parent_node.value:
+                            parent_node.left = current_node.right
+                            return
+                    #if the node had 2 children, we move the .right children link to the parent
+                    elif (current_node.left != None and current_node.right != None):
+                        #if we remove root we must find the new
+                        if parent_node == None:
+                            self.root = current_node.right
+                            return
+                        #elif current_node.value > parent_node.value:
+                        #    parent_node.right = cu
+
+                else:
+                    print("no value!")
+                    return
+
 
 if __name__ == "__main__":
 
@@ -81,5 +143,7 @@ if __name__ == "__main__":
     my_binary_tree.insert(6)
     my_binary_tree.insert(10)
     my_binary_tree.insert(20)
+    my_binary_tree.remove(2)
+    my_binary_tree.remove(20)
 
 

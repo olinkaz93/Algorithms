@@ -8,8 +8,6 @@ class Graph():
         'node2' : [ node, node, node ...]
         }
         """
-
-
         # adjacent_list:
         # {0: [1, 2], 1: [0, 2, 3], 2: [0, 1, 4], 3: [1, 4], 4: [2, 3, 5], 5: [4, 6], 6: [5]}
 
@@ -17,14 +15,16 @@ class Graph():
 
     def addNode(self, data):
         if data not in self.adjacent_list:
+            #add the node to the adjacency dictionary. End create the empty list, which will store all neighbours of the node(vertex)
             self.adjacent_list[data] = []
             self.number_of_nodes += 1
         else:
-            print("the Vertex, ", data, "is already in the adjency list")
+            print("the Vertex, ", data, "is already in the adjacency list")
 
     def addEdge(self, node1, node2):
-        #uniderected graphs - we add both relationship of two nodes, when we found out that is has been no inserted already
+        #unidirected graphs - we add both relationship of two nodes, when we found out that is has been no inserted already
         if node2 not in self.adjacent_list[node1]:
+            #under key 'node' we store the list of the neighbor's vertexes
             self.adjacent_list[node1].append(node2)
             self.adjacent_list[node2].append(node1)
         else:
@@ -74,6 +74,7 @@ if __name__ == "__main__":
 
     print(sample_graph.adjacent_list)
     print(sample_graph.adjacent_list[0])
+    print(type(sample_graph.adjacent_list))
 
 
 
