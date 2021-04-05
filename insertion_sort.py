@@ -37,3 +37,35 @@ def insertionSort(arr):
             #6) after that all elements on the left of index "i"
             #____|______
     return arr
+
+
+def printing_array(input):
+
+    data = input
+    print(input)
+    for i in range(0, len(input), 1):
+        print("element i", i, " : ", input[i])
+        for j in range(i+1, len(input), 1):
+            #print("i: ", i, "and j: ", j)
+            print("pair [i]:", i, "[j]:", j)
+            print("elements on the right of i -> ", j, " ", input[j])
+
+    print("###################")
+
+    print(input)
+    for i in range(0, len(input), 1):
+        #print("element i", i, " : ", input[i])
+        print("loop number i: ", i)
+        for j in range(0, len(input)-1, 1):
+            print("pairs, j:", j, "and j+1", j+1)
+            print(input[j], " ", input[j+1])
+
+
+if __name__ == "__main__":
+
+    result = insertionSort([3, 4, 2, 0, 100, -2])
+    print(result)
+
+    array = [5, 6, 8, -7, 10, 0]
+    printing_array(array)
+
