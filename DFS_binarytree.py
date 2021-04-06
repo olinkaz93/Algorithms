@@ -1,13 +1,12 @@
-# implementation of binary search tree
+#implementation of binary search tree
 
-# insert and lookup
+#insert and lookup
 
 class Node():
     def __init__(self, value):
         self.value = value
         self.left = None
-        self.right = None
-
+        self.right= None
 
 class BinarySearchTree():
     def __init__(self):
@@ -36,6 +35,7 @@ class BinarySearchTree():
                         return
                     else:
                         current_node = current_node.right
+
 
     def lookup(self, value):
         if (self.root == None):
@@ -73,18 +73,18 @@ class BinarySearchTree():
         else:
             current_node = self.root
             parent_node = None
-            while (True):
-                if (value_to_remove < current_node.value and current_node.left != None):
+            while(True):
+                if(value_to_remove < current_node.value and current_node.left != None):
                     parent_node = current_node
                     current_node = current_node.left
-                elif (value_to_remove > current_node.value and current_node.right != None):
+                elif(value_to_remove > current_node.value and current_node.right != None):
                     parent_node = current_node
                     current_node = current_node.right
-                elif (value_to_remove == current_node.value):
+                elif(value_to_remove == current_node.value):
                     print("found it, now remove it!")
                     print("parent", current_node.value)
-                    # when the node to remove is the root we must update the self.root
-                    # when the node to remove is a leaf element - has no right neither left children
+                    #when the node to remove is the root we must update the self.root
+                    #when the node to remove is a leaf element - has no right neither left children
                     if (current_node.left == None and current_node.right == None):
                         if (parent_node == None):
                             self.root = None
@@ -95,9 +95,9 @@ class BinarySearchTree():
                         elif current_node.value < parent_node.value:
                             parent_node.left = None
                         return
-                    # when the node to remove had only the right leaf
+                    #when the node to remove had only the right leaf
                     elif (current_node.left == None and current_node.right != None):
-                        # we must link, this leaf to the parent node, accordingly wethher the value is > or <
+                        #we must link, this leaf to the parent node, accordingly wethher the value is > or <
                         if parent_node == None:
                             self.root = current_node.right
                             return
@@ -115,46 +115,69 @@ class BinarySearchTree():
                         elif current_node.value < parent_node.value:
                             parent_node.left = current_node.right
                             return
-                    # if the node had 2 children, we move the .right children link to the parent
+                    #if the node had 2 children, we move the .right children link to the parent
                     elif (current_node.left != None and current_node.right != None):
-                        # if we remove root we must find the new
+                        #if we remove root we must find the new
                         if parent_node == None:
                             self.root = current_node.right
                             return
-                        # elif current_node.value > parent_node.value:
+                        #elif current_node.value > parent_node.value:
                         #    parent_node.right = cu
 
                 else:
                     print("no value!")
                     return
 
-    def breadth_first_search(self):
-        current_node = self.root
-        #we will return the result into the list
-        list = []
-        #we create also a queue to keep tracke the level we are at, to get the access of the children
-        #once we are at the end of traverse at the one level we must come back to the parent and follow up with
-        #the children node
+    #DFS traversal
+    def DFS_inorder(self, node, my_list):
+        if node != None:
+            self.DFS_inorder(node.left, my_list)
+            my_list.append(node.value)
+            self.DFS_inorder(node.right, my_list)
+        return my_list
 
-        queue_of_nodes = []
+    def DFS_preorder(self, node, my_list):
+        if node != None:
+            my_list.append(node.value)
+            self.DFS_inorder(node.left, my_list)
+            self.DFS_inorder(node.right, my_list)
+        return my_list
 
-        queue_of_nodes.append(current_node)
+    def DFS_postorder(self, node, my_list):
+        if node != None:
+            self.DFS_inorder(node.left, my_list)
+            self.DFS_inorder(node.right, my_list)
+            my_list.append(node.value)
+        return my_list
 
-        while (len(queue_of_nodes) > 0):
-            current_node = queue_of_nodes.pop(0)
-            list.append(current_node.value)
+    def PreOrder(self, node, list):
+        if (node == None):
+            return
+        list.append(node.value)
+        self.PreOrder(node.left, list)
+        self.PreOrder(node.right, list)
+        return list
 
-            if (current_node.left != None):
-                queue_of_nodes.append(current_node.left)
-            if current_node.right != None:
-                queue_of_nodes.append(current_node.right)
+    def InOrder(self, node, list):
+        if (node == None):
+            return
+        self.PreOrder(node.left, list)
+        list.append(node.value)
+        self.PreOrder(node.right, list)
+        return list
 
-        print(list)
+    def PostOrder(self, node, list):
+        if (node == None):
+            return
+        self.PreOrder(node.left, list)
+        self.PreOrder(node.right, list)
+        list.append(node.value)
+        return list
 
-   # def breadth_first_search_recursive(self):
 
 
 if __name__ == "__main__":
+
     my_binary_tree = BinarySearchTree()
     my_binary_tree.insert(10)
     my_binary_tree.insert(1)
@@ -169,9 +192,16 @@ if __name__ == "__main__":
     my_binary_tree.insert(20)
     my_binary_tree.remove(2)
     my_binary_tree.remove(20)
-    my_binary_tree.insert(10000)
-    my_binary_tree.breadth_first_search()
-    my_binary_tree.lookup(10000)
-
-
-
+    my_binary_tree.insert(100)
+    my_binary_tree.insert(150)
+    my_binary_tree.insert(1110)
+    my_binary_tree.insert(7)
+    print(my_binary_tree.DFS_inorder(my_binary_tree.root, []))
+    print(my_binary_tree.DFS_preorder(my_binary_tree.root, []))
+    print(my_binary_tree.DFS_postorder(my_binary_tree.root, []))
+    result = my_binary_tree.PreOrder(my_binary_tree.root, [])
+    print("PreOrder DFS", result)
+    result = my_binary_tree.InOrder(my_binary_tree.root, [])
+    print("InOrder DFS", result)
+    result = my_binary_tree.PostOrder(my_binary_tree.root, [])
+    print("PostOrder DFS", result)
