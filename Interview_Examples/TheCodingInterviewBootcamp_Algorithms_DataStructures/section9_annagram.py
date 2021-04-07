@@ -72,12 +72,13 @@ def anagrams(string_a, string_b):
     if (len(dictionary_of_chars_string_a.keys())) != (len(dictionary_of_chars_string_b.keys())):
         return False
 
+    # 2) we must have the same values in the same keys
     for key in dictionary_of_chars_string_a:
         if dictionary_of_chars_string_a[key] == dictionary_of_chars_string_b[key]:
             return True
         else:
             return False
-    #2) we must have the same values in the same keys
+
 
 
 if __name__ == "__main__":
