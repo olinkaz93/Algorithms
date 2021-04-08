@@ -40,8 +40,9 @@ s consists of parentheses only '()[]{}'.
 
 
 def isValid(string):
-
-    if (len(string)%2 != 0):
+    if (len(string) % 2 != 0):
+        return False
+    if (string[0] == ")" or string[0] == "}" or string[0] == "]"):
         return False
 
     stack_of_paranteses = []
@@ -49,7 +50,9 @@ def isValid(string):
     for char in string:
         if char == "(" or char == "[" or char == "{":
             stack_of_paranteses.append(char)
-            print("current", char)
+            # print("current", char)
+        elif (char == ")" or char == "]" or char == "}") and len(stack_of_paranteses) == 0:
+            return False
         elif char == ")" or char == "]" or char == "}":
             last_element_in_stack = stack_of_paranteses.pop()
             if char == ")" and last_element_in_stack != "(":
@@ -59,9 +62,10 @@ def isValid(string):
             if char == "}" and last_element_in_stack != "{":
                 return False
 
-    result = True
-
-    return result
+    if len(stack_of_paranteses) != 0:
+        return False
+    else:
+        return True
 
 if __name__ == "__main__":
 
