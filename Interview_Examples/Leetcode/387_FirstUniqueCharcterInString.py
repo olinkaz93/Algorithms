@@ -35,15 +35,16 @@ def firstUnique2(word):
 
     for char, indexes in dictionary_of_characters.items():
         print(char, " ", indexes)
+        print("my indexesS!:", indexes)
         if (len(indexes)) == 1:
             print(indexes)
             return indexes
-        else:
-            return -1
+
+    return -1
 
 
 if __name__ == "__main__":
-    word = "leetcode"
+    word = "eetccdee"
 
     #result = firstUnique(word)
     #print(result)

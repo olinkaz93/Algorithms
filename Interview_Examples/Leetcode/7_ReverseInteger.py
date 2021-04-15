@@ -15,12 +15,7 @@ def reverseInt(x):
 
     for right_pointer in range()
 
-    #for pointer in range(right_pointer, -1, -1):
-    #    reversed_number += number[pointer]
-    #    if pointer == 0 and number[pointer] == "-1":
-    #        return -(int(reversed_number))
-    #    else:
-    #        return int(reversed_number)
+
 
 if __name__ == "__main__":
     reverseInt(-190)
