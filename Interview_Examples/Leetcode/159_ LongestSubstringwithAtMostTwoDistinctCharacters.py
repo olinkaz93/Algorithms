@@ -16,6 +16,7 @@ Explanation: The substring is "aabbb" which its length is 5.
 Constraints:
 1 <= s.length <= 104
 s consists of English letters.
+https://www.youtube.com/watch?v=6tBEcczNMl8
 """
 
 def lengthOfLongestSubstringTwoDistinct(s):
