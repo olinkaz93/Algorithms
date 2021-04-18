@@ -27,8 +27,29 @@ def minSubArrayLen(target, nums):
     if len(nums) == 1 and nums[0] != target:
         return 0
 
-    start_index = 0
-    for i range
+    target = target
+    right_pointer = 0
+    left_pointer = 0
+    curr_sum = 0
+
+    minimum = float('inf')
+
+    for right_pointer in range(0, len(nums), 1):
+        curr_sum += nums[right_pointer]
+        while (curr_sum >= target):
+            length = right_pointer - left_pointer + 1
+            if length < minimum:
+                minimum = length
+
+            curr_sum -= nums[left_pointer]
+            left_pointer += 1
+
+    if minimum != float('inf'):
+        return minimum
+    else:
+        return 0
+
+
 
 if __name__ == "__main__":
-    minSubArrayLen(4, [1,4,4])
+    print(minSubArrayLen(7, [2,3,1,2,4,3]))
