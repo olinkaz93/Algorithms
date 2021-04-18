@@ -19,9 +19,28 @@ Output: 23
 https://youtu.be/5WZl3MMT0Eg
 """
 
+"""
+The idea is to just focus on the positive number first.
+If the final sum is unchanged and the maximum value is a negative number.
+That means we just need to return the least negative number which is just one negative from the entire array.
+"""
+
 
 def subarraySum(nums):
+    best_sum = 0
+    current_sum = 0
+    for x in nums:
+        current_sum = max(0, current_sum + x)
+        print(current_sum)
+        best_sum = max(best_sum, current_sum)
+        print(best_sum)
+        
+    if max(nums) < 0 and best_sum == 0:
+        return max(nums)
+    return best_sum
+
 
 if __name__ == "__main__":
-    result = subarraySum([-1, -1, 1], 0)
+    nums = [-2,1,-3,4,-1,2,1,-5,4]
+    result = subarraySum(nums)
     print(result)
