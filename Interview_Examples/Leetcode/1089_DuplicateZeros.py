@@ -18,6 +18,8 @@ Input: [1,2,3]
 Output: null
 Explanation: After calling your function, the input array is modified to: [1,2,3]
 
+https://www.youtube.com/watch?v=io3N5YTFbxM
+
 """
 
 
@@ -31,7 +33,6 @@ def duplicateZeros(arr):
             next_index = i+1
             while(next_index < len(arr)):
                 
-
 
 
 if __name__ == "__main__":
