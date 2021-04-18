@@ -44,6 +44,14 @@ There is at least one word in s.
 
 """
 
+"""
+Convert list to string in python using join() in python.
+In python string class provides a function join() i.e. join()
+function accepts an iterable sequence like list or tuple etc as an argument
+and then joins all items in this iterable sequence
+to create a string. In the end it returns the concatenated string
+"""
+
 def reverseWords(string):
 
     splitted_string = string.split()
