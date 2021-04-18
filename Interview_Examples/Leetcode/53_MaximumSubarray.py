@@ -34,7 +34,7 @@ def subarraySum(nums):
         print(current_sum)
         best_sum = max(best_sum, current_sum)
         print(best_sum)
-        
+
     if max(nums) < 0 and best_sum == 0:
         return max(nums)
     return best_sum
