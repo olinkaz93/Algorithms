@@ -25,9 +25,9 @@ https://www.youtube.com/watch?v=0DnG0Kc9M2E !!!
 """
 
 
-def findDiagonalOrder(matrix: List[List[int]]) -> List[int]:
-    if not matrix or not matrix[0]:
-        return []
+def findDiagonalOrder(matrix):
+    #if not matrix or not matrix[0]:
+    #   return []
 
     num_rows, num_cols = len(matrix), len(matrix[0])
     diagonals = [[] for _ in range(num_rows + num_cols - 1)]
@@ -47,4 +47,4 @@ def findDiagonalOrder(matrix: List[List[int]]) -> List[int]:
     return res
 
 if __name__ == "__main__":
-    findDiagonalOrder([[1,2],[3,4]])
+    print(findDiagonalOrder([[1,2],[3,4]]))
