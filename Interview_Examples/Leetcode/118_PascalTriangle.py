@@ -40,7 +40,7 @@ def pascalTriangle(n):
         previous_row = triangle[previous_index]
         #print(previous_row)
         current_row.append(1)
-        for i in range (1, row, 1):
+        for i in range (1, row):
             current_row.append(previous_row[i-1]+previous_row[i])
         current_row.append(1)
         triangle.append(current_row)
