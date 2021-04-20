@@ -35,36 +35,36 @@ Could you do it in-place with O(1) extra space?
 """
 input_list = [1,2,3,4,5]
 k = 2
+
+https://www.youtube.com/watch?v=lTHTR_jsqAQ
 """
 
+def reverse(nums, start, end):
 
-class Solution(object):
-    def rotate(self, nums, k):
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: None Do not return anything, modify nums in-place instead.
-        """
+    while (start < end):
+        nums[start], nums[end]= nums[end], nums[start]
+        start += 1
+        end -= 1
+    return nums
 
-        if len(nums) == 1:
-            return nums
-        if k == 0:
-            return nums
+def rotate(nums, k):
+    if len(nums) == 1:
+        return nums
+    if k == 0:
+        return nums
 
+    k = len(nums) % k
 
-        else:
-            rotation = k % len(nums)
-            print(rotation)
-            #[1,2,9,0]
-            #[0,1,2,9]
-            #[9,0,1,2]
-            #[2,9,0,1]
-            nums = nums[rotation+3:] + nums[:rotation+1]
-            return nums
+    reverse(nums, 0, len(nums)-1)
+    reverse(nums, 0, k-1)
+    reverse(nums, k, len(nums)-1)
+
+    return nums
+
 
 
 if __name__ == "__main__":
 
-    solution = Solution()
-    result = solution.rotate([1,2,9,0], 3)
+
+    result = rotate([-1,-100,3,99], -2)
     print(result)
