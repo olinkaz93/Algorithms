@@ -1,21 +1,37 @@
+"""
+7. Reverse Integer
+
+Given a signed 32-bit integer x,
+return x with its digits reversed.
+If reversing x causes the
+value to go outside the
+signed 32-bit integer range [-231, 231 - 1],
+then return 0.
+
+Assume the environment
+does not allow you to
+store 64-bit integers
+(signed or unsigned).
+https://www.youtube.com/watch?v=CRgXG1vK-wg
+"""
+
 def reverseInt(x):
-    number = str(x)
-    #print(x)
+    reversed = 0
+    sign = -1 if x < 0 else 1
+    x = abs(x)
 
-    reversed_number = ""
+    while x > 0:
+        #pop - always last intiger
+        pop = x % 10
+        #we shorten the intiger 123 // 10 = 12
+        x //= 10
+        #multiply * 10 so we make extra space for 'pop' element
+        reversed = reversed * 10 + pop
 
-    # if(str[0] == "-"):
-    #    reversed_number += "-"
+    if reversed > -2 ** 31 and reversed < 2 ** 31 - 1:
+        return reversed * sign
 
-    right_pointer = len(number) - 1
-
-    while (number[right_pointer] != 0 and right_pointer >= 0):
-        right_pointer -= 1
-        print("pointer", right_pointer, " ", number[right_pointer])
-
-    for right_pointer in range()
-
-
+    return 0
 
 if __name__ == "__main__":
-    reverseInt(-190)
+    print(reverseInt(-190))
