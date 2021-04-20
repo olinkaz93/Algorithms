@@ -29,19 +29,29 @@ Explanation: There are no elements to the right of index 0.
 
 def replaceElements(arr):
     # if array has only one element, we return [-1]
+    # if array has only one element, we return [-1]
     if len(arr) == 1:
         return [-1]
 
     # for more elements we loop at ech of them,
-    # assign the max element on the right "max(arr[index + 1:])"
     # and the last we assign the last element as -1
 
-    else:
-        for index in range(0, len(arr) - 1, 1):
-            arr[index] = max(arr[index + 1:])
+    # else:
+    #    for index in range(0, len(arr)-1, 1):
+    #        arr[index] = max(arr[index + 1:])
 
-            # assign the last element
-        arr[len(arr) - 1] = -1
+    #    arr[len(arr) - 1] = -1
+    # return arr
+
+    current_max = arr[-1]
+
+    for index in range(len(arr) - 2, -1, -1):
+
+        current = arr[index]
+        arr[index] = current_max
+        if current > current_max:
+            current_max = current
+    arr[-1] = -1
     return arr
 
 
