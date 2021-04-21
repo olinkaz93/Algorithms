@@ -48,7 +48,8 @@ board[i][j] is a digit or '.'.
 
 create set that will gather all outputs from each element, after every iteration it will be added do set (unique collection!)
 # if element has existed already, we return FALSE
-https://www.youtube.com/watch?v=yn6QoEECv8s
+https://www.youtube.com/watch?v=Pl7mMcBm2b8&t=617s
+
 """
 
 def isValidSudoku(board):
