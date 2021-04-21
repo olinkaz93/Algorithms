@@ -45,6 +45,10 @@ board.length == 9
 board[i].length == 9
 board[i][j] is a digit or '.'.
 
+
+create set that will gather all outputs from each element, after every iteration it will be added do set (unique collection!)
+# if element has existed already, we return FALSE
+https://www.youtube.com/watch?v=yn6QoEECv8s
 """
 
 def isValidSudoku(board):
@@ -52,19 +56,55 @@ def isValidSudoku(board):
     :type board: List[List[str]]
     :rtype: bool
     """
+    num_of_rows = len(board)
+    num_of_cols = len(board[0])
 
-    
+    #elements = ["1","2","3","4","5","6","7","8","9","."]
+    my_set = set()
+    print(my_set)
+    for row in range(0, num_of_rows):
+
+        for col in range(0, num_of_cols):
+
+            #print(board[row][col])
+            el = board[row][col]
+            print("current el", el, "row", row, "col", col)
+            if el != ".":
+                current_el_in_row = "row: " + str(row) + " el: " + el
+                current_el_in_col = "col: " + str(col) + " el: " + el
+                current_el_in_box = "box " + str(row//3) + " " + str(col//3) + " el: " + el
+                #print("current box", current_el_in_row)
+                #print(type(current_el_in_col))
+                #print(type(my_set))
+                #print("my set", my_set)
+                #my_set.add(current_el_in_col)
+                #print(my_set)
+                #for el in my_set:
+                    #print("el", el, "<-")
+                if (current_el_in_row in my_set) or (current_el_in_col in my_set) or (current_el_in_box in my_set):
+                    return False
+                else:
+                    my_set.add(current_el_in_row)
+                    my_set.add(current_el_in_box)
+                    my_set.add(current_el_in_col)
+                    print("MY SET", my_set)
+    return True
+
+
+                #el not in set:
+                #    set.add()
+            #print(type(el))
 
 if __name__ == "__main__":
-    board = [["8", "3", ".", ".", "7", ".", ".", ".", "."]
-        , ["6", ".", ".", "1", "9", "5", ".", ".", "."]
-        , [".", "9", "8", ".", ".", ".", ".", "6", "."]
-        , ["8", ".", ".", ".", "6", ".", ".", ".", "3"]
-        , ["4", ".", ".", "8", ".", "3", ".", ".", "1"]
-        , ["7", ".", ".", ".", "2", ".", ".", ".", "6"]
-        , [".", "6", ".", ".", ".", ".", "2", "8", "."]
-        , [".", ".", ".", "4", "1", "9", ".", ".", "5"]
-        , [".", ".", ".", ".", "8", ".", ".", "7", "9"]]
+    board = [["5","3",".",".","7",".",".",".","."]
+,["6",".",".","1","9","5",".",".","."]
+,[".","9","8",".",".",".",".","6","."]
+,["8",".",".",".","6",".",".",".","3"]
+,["4",".",".","8",".","3",".",".","1"]
+,["7",".",".",".","2",".",".",".","6"]
+,[".","6",".",".",".",".","2","8","."]
+,[".",".",".","4","1","9",".",".","5"]
+,[".",".",".",".","8",".",".","7","9"]]
 
     result = isValidSudoku(board)
     print(result)
