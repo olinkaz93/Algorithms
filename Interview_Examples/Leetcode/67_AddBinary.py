@@ -85,6 +85,32 @@ def addBinary(a, b):
     #print(type(x))
     return binary_string
 
+"""
+Time complexity : BigO(N+M), where NN and MM are lengths of the input strings a and b.
+
+Space complexity :Big O(max(N,M)) to keep the answer.
+"""
+
+"""
+
+Now the problem is reduced:
+one has to find the sum of answer without carry and carry.
+It's the same problem - to sum two numbers,
+and hence one could solve it in a loop with the condition statement "while carry is not equal to zero".
+
+1) Convert a and b into integers x and y, x will be used to keep an answer, and y for the carry.
+
+2) While carry is nonzero: y != 0:
+
+3) Current answer without carry is XOR of x and y: answer = x^y.
+
+4) Current carry is left-shifted AND of x and y: carry = (x & y) << 1.
+
+5) Job is done, prepare the next loop: x = answer, y = carry.
+
+6) Return x in the binary form.
+"""
+
 if __name__ == "__main__":
 
     result = addBinary("0011", "0010")
