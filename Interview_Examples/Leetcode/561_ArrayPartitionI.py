@@ -24,7 +24,8 @@ Constraints:
 1 <= n <= 104
 nums.length == 2 * n
 -104 <= nums[i] <= 104
-https://www.youtube.com/watch?v=zktJRDQHgQo
+https://www.youtube.com/watch?v=zktJRDQHgQo - alternative (linear BigO (n))
+https://www.youtube.com/watch?v=nxdc6baaioE - sorting
 """
 
 
