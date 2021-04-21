@@ -39,8 +39,14 @@ def strStr(haystack, needle):
         right_pointer += 1
         if(haystack[left_pointer] == needle[left_pointer]):
             print("same")
+
+            https://www.youtube.com/watch?v=JG2VSsgYWuo
     """
 
+    for i in range(len(haystack) - len(needle) + 1):
+        if haystack[i:i + len(needle)] == needle:
+            return i
+    return -1
 
 
 
