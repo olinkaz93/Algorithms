@@ -41,16 +41,27 @@ def strStr(haystack, needle):
             print("same")
 
             https://www.youtube.com/watch?v=JG2VSsgYWuo
+
+
+
+            # solution https://www.youtube.com/watch?v=RDYZCErOQws&t=277s
     """
 
     for i in range(len(haystack) - len(needle) + 1):
-        if haystack[i:i + len(needle)] == needle:
-            return i
+        # In this way, you create many objects of substrings, which makes space complexity NOT O(1) !
+
+        #if haystack[i:i + len(needle)] == needle:
+        #    return i
+        for j in range(len(needle)):
+            if haystack[i + j] != needle[j]:
+                break
+            if j == len(needle) - 1:
+                return i
     return -1
 
 
 
 if __name__ == "__main__":
-    strStr("string", "str")
+    print(strStr("string", "ri"))
 
 
