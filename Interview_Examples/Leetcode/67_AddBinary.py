@@ -81,7 +81,7 @@ def addBinary(a, b):
         x = answer
         y = carry
 
-    binary_string = bin(answer)[2:]
+    binary_string = bin(x)[2:]
     #print(type(x))
     return binary_string
 
