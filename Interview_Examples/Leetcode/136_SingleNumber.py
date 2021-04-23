@@ -21,18 +21,22 @@ Output: 1
 """
 
 
-def singleNumber(nums):
+def singleNumber(self, nums):
+    if len(nums) == 0:
+        return False
 
-    dictionary_numbers = {}
-    for number in nums:
-        if number not in dictionary_numbers:
-            dictionary_numbers[number] = 1
-        else:
-            dictionary_numbers[number] += 1
+    nums.sort()
+    previous_element = 0
+    index = 1
+    while index < len(nums):
+        if nums[previous_element] == nums[index]:
+            index += 2
+            previous_element += 2
+        elif nums[previous_element] != nums[index]:
+            return nums[previous_element]
+    return nums[-1]
 
-    for number in dictionary_numbers:
-        if dictionary_numbers[number] == 1:
-            return number
+
 
 if __name__ == "__main__":
     list_a = [1,2,2]
