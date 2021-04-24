@@ -40,6 +40,26 @@ def groupAnagrams(strs):
     print(d)
     return d.values()
 
+def groupAnnagrams2(strs):
+    dictionary = {}
+
+    for word in strs:
+        count = [0] * 26 #we have 26 characters
+
+        for char in word:
+            current_char = ord(char) - ord("a")
+            count[current_char] += 1
+
+        if tuple(count) not in dictionary:
+            dictionary[tuple(count)] = [word]
+        else:
+            dictionary[tuple(count)].append(word)
+        #dictionary[tuple(count)].
+    return dictionary.values()
+
+
+
 if __name__ == "__main__":
     strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
     print(groupAnagrams(strs))
+    print(groupAnnagrams2(strs))
