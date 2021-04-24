@@ -42,10 +42,11 @@ https://www.youtube.com/watch?v=lTHTR_jsqAQ
 def reverse(nums, start, end):
 
     while (start < end):
-        nums[start], nums[end]= nums[end], nums[start]
+        nums[start], nums[end] = nums[end], nums[start]
         start += 1
         end -= 1
     return nums
+
 
 def rotate(nums, k):
     if len(nums) == 1:
@@ -53,12 +54,14 @@ def rotate(nums, k):
     if k == 0:
         return nums
 
-    k = len(nums) % k
-
+    k = k % len(nums)
+    print("k", k)
     reverse(nums, 0, len(nums)-1)
+    print(nums)
     reverse(nums, 0, k-1)
+    print("first reverse", nums)
     reverse(nums, k, len(nums)-1)
-
+    print(nums)
     return nums
 
 
@@ -66,5 +69,5 @@ def rotate(nums, k):
 if __name__ == "__main__":
 
 
-    result = rotate([-1,-100,3,99], -2)
+    result = rotate([1,2,3,4,5,6,7], 3)
     print(result)

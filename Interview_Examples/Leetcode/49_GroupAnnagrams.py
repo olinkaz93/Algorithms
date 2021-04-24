@@ -48,6 +48,7 @@ def groupAnnagrams2(strs):
 
         for char in word:
             current_char = ord(char) - ord("a")
+            print(current_char)
             count[current_char] += 1
 
         if tuple(count) not in dictionary:
