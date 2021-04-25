@@ -70,6 +70,7 @@ def containDuplicate(nums, k):
 
     return False
 
+
 if __name__ == "__main__":
     print(containsNearbyDuplicate([1,0,1,1,2], 1))
     print(containDuplicate([1, 1, 0, 0, 1], 3))
