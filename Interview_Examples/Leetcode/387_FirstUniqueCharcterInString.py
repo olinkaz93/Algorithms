@@ -18,8 +18,10 @@ def firstUnique(word):
             return
 
 def firstUnique2(word):
+    from collections import OrderedDict
 
-    dictionary_of_characters = {}
+    dictionary_of_characters = OrderedDict()
+    #dictionary_of_characters = {}
 
     for index, char in enumerate(word):
         current_unique = char
@@ -38,9 +40,10 @@ def firstUnique2(word):
         print("my indexesS!:", indexes)
         if (len(indexes)) == 1:
             print(indexes)
-            return indexes
+            return indexes[0]
 
     return -1
+
 
 
 if __name__ == "__main__":
@@ -48,4 +51,6 @@ if __name__ == "__main__":
 
     #result = firstUnique(word)
     #print(result)
-    result = firstUnique2(word)
+    #result = firstUnique2(word)
+    result = firstUnique2("loveleetcode")
+    print(result)
