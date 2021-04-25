@@ -49,7 +49,28 @@ def groupStrings(strings):
     values = dictionary_of_words.values()
     return values
 
+def group(strings):
+    if len(strings) == 1:
+        return [strings]
+
+    dictionary_of_words = {}
+
+    for word in strings:
+        key = ""
+        for letter in range(0, len(word) - 1, 1):
+            key_int = str(ord(word[letter + 1]) - ord(word[letter])% 26)
+            # print(key_int)
+            key += key_int
+            print(key)
+        if key not in dictionary_of_words:
+            dictionary_of_words[key] = [word]
+        else:
+            dictionary_of_words[key].append(word)
+
+    values = dictionary_of_words.values()
+    return values
 
 if __name__ == "__main__":
-    strings = ["abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"]
-    print(groupStrings(strings))
+    strings = ["abc","bcd","acef","xyz","az","ba","a","z","al"]
+    #print(groupStrings(strings))
+    print(group(strings))
