@@ -21,6 +21,10 @@ The number of nodes in the list is sz.
 1 <= sz <= 30
 0 <= Node.val <= 100
 1 <= n <= sz
+
+https://www.youtube.com/watch?v=XtYEEvrhemI
+https://www.youtube.com/watch?v=Kka8VgyFZfc
+
 """
 
 
@@ -80,6 +84,12 @@ class Solution(object):
 
         return dummy.next
         """
+
+
+    """ We create a dummy node,
+    and start our pointers from there,
+    the distance between them must be N steps away, in that case I will find the reference
+    to the element tha must be deleted """
 
     def removeNthFromEnd(self, head, n):
         dummy = ListNode()
