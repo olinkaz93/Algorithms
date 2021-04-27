@@ -103,6 +103,12 @@ class Solution(object):
         for i in range(0, n):
             fast_pointer = fast_pointer.next
 
+            """
+            Input: head = [1,2,3,4,5], n = 2
+            
+            Output: [1,2,3,5]
+            """
+
         while (fast_pointer.next != None):
             slow_pointer = slow_pointer.next
             fast_pointer = fast_pointer.next
