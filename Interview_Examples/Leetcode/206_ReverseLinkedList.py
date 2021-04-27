@@ -29,10 +29,7 @@ https://www.interviewcake.com/question/python3/reverse-linked-list?course=fc1&se
 #         self.next = next
 
 def reverseList(self, head):
-    """
-    :type head: ListNode
-    :rtype: ListNode
-    """
+
 
     if head == None:
         return None
@@ -40,7 +37,7 @@ def reverseList(self, head):
     node = head
     previous_node = None
 
-    while (node.next != None):
+    while (node != None):
         next_node = node.next
         node.next = previous_node
         previous_node = node
