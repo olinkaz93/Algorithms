@@ -75,8 +75,6 @@ class MyCircularQueue:
         """
         self.list = [-1]*k
         self.size = 0
-        self.front = 0
-        self.end = 0
 
     def enQueue(self, value):
         """
@@ -84,6 +82,8 @@ class MyCircularQueue:
         :rtype: bool
         """
         if (self.size == 0):
+            self.front = 0
+            self.end = 0
             self.list[self.front] = value
             self.size +=1
         elif (self.isFull()):
@@ -105,6 +105,7 @@ class MyCircularQueue:
             return False
         else:
             value = self.list[self.front]
+            self.list[self.front] = -1
             self.size -= 1
             self.front += 1
             self.front = self.front % len(self.list)
@@ -165,14 +166,16 @@ if __name__ == "__main__":
     circular.enQueue(2)
     circular.enQueue(3)
     circular.enQueue(40)
-    circular.enQueue(100)
-
+    print("=============")
+    print(circular.Front())
+    print(circular.Rear())
+    print(circular.deQueue())
+    print(circular.Rear())
     print(circular.Front())
     print(circular.deQueue())
-    print(circular.deQueue())
-    print(circular.deQueue())
-    print(circular.deQueue())
-    print(circular.deQueue())
-    print(circular.deQueue())
+    print(circular.Front())
+    print("print!")
+    for el in circular.list:
+        print(el)
 
 
