@@ -72,6 +72,32 @@ class MovingAverage:
         self.total += val
         return (self.total / len(self.queue))
 
+
+"""
+By definition of the moving window, at each step,
+we add a new element to the window, and at the same time we remove
+the oldest element from the window.
+Here, we could apply a data structure called double-ended queue (a.k.a deque)
+to implement the moving window,
+which would have the constant time complexity
+(\mathcal{O}(1)O(1)) to add or remove an element from both its ends.
+With the deque, we could reduce the space complexity down to
+\mathcal{O}(N)O(N) where NN is the size of the moving window.
+"""
+
+"""
+Algorithm
+
+Here is the definition of the deque from Python.
+We have similar implementation of deque in other programming languages such as Java.
+
+Deques are a generalization of stacks and queues
+(the name is pronounced deck and is short for double-ended queue).
+Deques support thread-safe, memory efficient appends
+and pops from either side of the deque with approximately the same O(1) performance in either direction.
+Follow the intuition, we replace the queue with
+the deque and add a new variable window_sum in order to calculate the sum of moving window in constant time.
+"""
 if __name__ == "__main__":
     window = MovingAverage(3)
     print(window.next(1))
