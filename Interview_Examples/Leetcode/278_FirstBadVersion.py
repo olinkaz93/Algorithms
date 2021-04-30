@@ -65,6 +65,10 @@ class Solution(object):
 
         while (low <= high):
             mid = low + (high - low) // 2
+            #to avoid over flow!
+            # we better use low + (high - low) // 2
+            # as we substract and avoid overflow
+            # the concept mid = (low + high) // 2 - make cause overflow
             print("mid", mid)
             if isBadVersion(mid) == True and isBadVersion(mid - 1) == False:
                 return mid
