@@ -53,6 +53,10 @@ it obviously implies that the peak lies towards the right of this element.
 Thus, we reduce the search space to the right of midmid and perform the same process on the right subarray.
 
 In this way, we keep on reducing the search space till we eventually reach a state where only one element is remaining in the search space. This single element is the peak element.
+
+https://www.youtube.com/watch?v=HtSuA80QTyo&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=2&t=0s
+
+
 """
 
 
