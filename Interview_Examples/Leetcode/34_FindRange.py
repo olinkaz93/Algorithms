@@ -39,7 +39,8 @@ nums is a non-decreasing array.
 -109 <= target <= 109
 
 
-
+https://www.youtube.com/watch?v=bU-q1OJ0KWw
+https://www.youtube.com/watch?v=YaZVo8hnA9g
 
 """
 
