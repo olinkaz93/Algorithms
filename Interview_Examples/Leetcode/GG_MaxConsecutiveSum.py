@@ -54,6 +54,28 @@ def maxConsecutiveSum(nums, k):
 
     return maxsum
 
-if __name__ == "__main__":
-    print(maxConsecutiveSum([1, 4, 2, 10, 2, 3, 1, 0, 20], 4))
 
+def maxSumCons(nums, k):
+
+    maxsum = float("-inf")
+    right = 0
+    left = 0
+    summ = 0
+
+    #we loop and add right/end value pointers to the sum
+    for right in range(len(nums)):
+        summ += nums[right]
+
+        #if the length (right - left + 1) is == k ,
+        if right - left + 1 == k:
+            #we check the maxsum
+            max(maxsum, summ)
+            #and srhink the value by nums[left] and move it +1
+            summ -= nums[left]
+            left += 1
+    return maxsum
+
+
+if __name__ == "__main__":
+    #print(maxConsecutiveSum([1, 4, 2, 10, 2, 3, 1, 0, 20], 4))
+    print(maxSumCons([1, 4, 2, 10, 2, 3, 1, 0, 20], 4))
