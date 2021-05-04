@@ -69,9 +69,9 @@ class Solution(object):
         """
         N = len(s)
         count = 0
-        for start_left in range(N):
-            for start_right in [start_left, start_left + 1]:
-                left, right = start_left, start_right
+        for i in range(N):
+            for j in [i, i + 1]:
+                i, j = start_left, start_right
                 while left >= 0 and right < N and s[left] == s[right]:
                     count += 1
                     left -= 1
