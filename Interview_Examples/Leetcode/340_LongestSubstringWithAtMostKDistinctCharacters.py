@@ -23,7 +23,9 @@ Constraints:
 https://www.youtube.com/watch?v=7Q1uylXOatU
 """
 
-def lengthOfLongestSubstringKDistinct(s, k):
+"""
+def lengthOfLongestSubstringKDistinct(self, s, k):
+
 
     string = s
     the_longest_length = 0
@@ -40,6 +42,7 @@ def lengthOfLongestSubstringKDistinct(s, k):
             dictionary_of_characters[character] = 1
         else:
             dictionary_of_characters[character] += 1
+
         while (len(dictionary_of_characters.keys()) > k):
 
             current_char = string[left_pointer]
@@ -51,10 +54,44 @@ def lengthOfLongestSubstringKDistinct(s, k):
 
             left_pointer += 1
 
-        if right_pointer - left_pointer + 1 > the_longest_length:
-            the_longest_length = right_pointer - left_pointer + 1
+        the_longest_length = max(the_longest_length, right_pointer - left_pointer + 1)
 
     return the_longest_length
+
+"""
+
+
+def lengthOfLongestSubstringKDistinct(self, s, k):
+    left = 0
+    right = 0
+    maxx = 0
+    # we need to count the letters and return the LENGTH
+    # of the LONGEST substring with AT MOST K distinct characters
+
+    # we will expand the window and count the letters and check if they are < k
+    count_letters = 0
+
+    char_list = [0] * 128
+
+    for right in range(0, len(s), 1):
+
+        rletter = s[right]
+        char_right = ord(s[right]) - ord('a')
+        if char_list[char_right] == 0:
+            count_letters += 1
+
+        char_list[char_right] += 1
+        while (count_letters > k):
+            lletter = s[left]
+            char_left = ord(s[left]) - ord('a')
+            char_list[char_left] -= 1
+            if char_list[char_left] == 0:
+                count_letters -= 1
+            left += 1
+
+        maxx = max(maxx, right - left + 1)
+
+    return maxx
 
 if __name__ == "__main__":
     #d = {}
