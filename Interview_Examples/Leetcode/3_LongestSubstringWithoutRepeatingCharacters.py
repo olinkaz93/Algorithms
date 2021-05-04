@@ -82,6 +82,26 @@ def findSubstring(string):
 
     return max_length
 
+
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+
+        chars = set()
+        longest = 0
+        left = 0
+        for right in range(len(s)):
+            if s[right] not in chars:
+                chars.add(s[right])
+                longest = max(longest, right - left + 1)
+            else:
+                # if we have duplicate we remove old characters
+                while s[left] != s[right]:
+                    chars.remove(s[left])
+                    left += 1
+                left += 1
+        return longest
+
+
 if __name__ == "__main__":
 
     example = "bsialala"
